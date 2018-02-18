@@ -3,7 +3,6 @@ class DeliveryOrder < ApplicationRecord
   validates :order_id, uniqueness: true, allow_nil: true
   after_save :create_order_id, :create_serving_datetime
 
-
   private
 
   def create_order_id
