@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20180218101459) do
   create_table "order_items", force: :cascade do |t|
     t.bigint "delivery_order_id"
     t.bigint "meal_id"
+    t.integer "quantity"
+    t.integer "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["delivery_order_id"], name: "index_order_items_on_delivery_order_id"
