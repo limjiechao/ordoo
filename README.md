@@ -10,7 +10,11 @@ Create a new Rails project:
 rails new ordoo --database=postgresql
 ```
 
-## `An error occurred while installing ffi (1.9.21), and Bundler cannot continue.`
+## Workaround for `ffi (1.9.21)` installation error
+
+```
+An error occurred while installing ffi (1.9.21), and Bundler cannot continue.
+```
 
 This is a workaround. Add the following to `Gemfile`:
 
@@ -51,15 +55,29 @@ rails g model OrderItem delivery_order:references meal:references quantity:integ
 
 ## Update associations in models
 
+![Entity Relationship Diagram](./documentation/ordoo_erd.svg)
 
+For `DeliveryOrder`, allow `order_id` to be stored as `null` even though it is validated for `uniqueness`.
+
+```
+validates :order_id, uniqueness: true, allow_nil: true
+```
+
+As there is no `id` before `DeliveryOrder.create()`, this allows the `order_id` to be created from `id` after it has been saved.
 
 ## Create database and run migrations
-
-
 
 ```
 rails db:create
 rails db:migrate
+```
+
+## Seed the database
+
+Make sure the database has no active session before running the following command as the database will first be dropped before seeding.
+
+```
+rails db:seed
 ```
 
 <!--
