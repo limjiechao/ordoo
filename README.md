@@ -4,11 +4,23 @@ This repository contains my solution to [Ordoo](https://gist.github.com/primauli
 
 # Deployment Instructions
 
+## Local deployment
+
 Clone or download this repository into a directory. Then run the following in the project directory:
 
 ```
 bundle install
 rails s
+```
+
+## Heroku deployment
+
+```
+heroku create
+git push heroku master
+heroku run rails db:migrate
+heroku run rails db:seed
+heroku open
 ```
 
 # Database creation and initialization
@@ -94,6 +106,16 @@ rails db:migrate
 ```
 
 ## Seed the database
+
+### Clearing the database before seeding
+
+The following commands delete the tables in a sequence opposite from migration. Compared to `Rake::Task['db:reset'].invoke`, this approach can be run locally *and* remotely on Heroku. The user does not have to run `heroku pg:reset DATABASE` remotely before seeding the database on Heroku.
+
+```
+OrderItem.delete_all
+Meal.delete_all
+DeliveryOrder.delete_all
+```
 
 Make sure the database has no active session before running the following command as the database will first be dropped before seeding.
 
