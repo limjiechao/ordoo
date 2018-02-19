@@ -1,6 +1,27 @@
 # README
 
-# Setup
+This repository contains my solution to [Ordoo](https://gist.github.com/primaulia/636900d7d32ca73c69d5aa119f6de327).
+
+# Deployment Instructions
+
+Clone or download this repository into a directory. Then run the following in the project directory:
+
+```
+bundle install
+rails s
+```
+
+# Database creation and initialization
+
+Run the following in the shown order:
+
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
+
+# Development Log
 
 ## Initialization
 
@@ -78,6 +99,13 @@ Make sure the database has no active session before running the following comman
 
 ```
 rails db:seed
+```
+
+## Create Orders controller
+
+```
+d controller orders index show --no-stylesheets --no-javascripts --no-assets --n
+o-test-framework --no-helper
 ```
 
 <!--
