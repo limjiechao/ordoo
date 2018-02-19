@@ -6,9 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Clear the DB on Heroku in Terminal
+# `heroku pg:reset DATABASE`
 
-# Clear the DB
-Rake::Task['db:reset'].invoke
+# Clear the DB locally
+# Rake::Task['db:reset'].invoke
+
+# Delete each table in the opposite sequence from migration
+OrderItem.delete_all
+Meal.delete_all
+DeliveryOrder.delete_all
 
 # Create 10 meals
 [
