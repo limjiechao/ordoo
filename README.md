@@ -104,7 +104,7 @@ rails db:seed
 ## Create Orders controller
 
 ```
-d controller orders index show --no-stylesheets --no-javascripts --no-assets --n
+rails g controller orders index show --no-stylesheets --no-javascripts --no-assets --n
 o-test-framework --no-helper
 ```
 
