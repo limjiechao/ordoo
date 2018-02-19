@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'index#index'
+
   get 'orders/index'
 
   get 'orders/show'
